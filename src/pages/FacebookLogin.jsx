@@ -5,10 +5,10 @@ import {
   setSecretToken,
 } from "../Store/FbSlice";
 import { useDispatch, useSelector } from "react-redux";
-import { useCookies } from "react-cookie";
+// import { useCookies } from "react-cookie";
 const FacebookLogin = () => {
   const dispatch = useDispatch();
-  const [cookies, setCookie] = useCookies(["user"]);
+  // const [cookies, setCookie] = useCookies(["user"]);
 
   const statusChangeCallback = (response) => {
     if (response.status === "connected") {
@@ -22,7 +22,7 @@ const FacebookLogin = () => {
       dispatch(fetchProfileData());
       dispatch(fetchPageList());
       const FB_GRAPH = useSelector((store) => store.FB_GRAPH);
-      setCookie("FB_GRAPH", FB_GRAPH, { path: "/" });
+      // setCookie("FB_GRAPH", FB_GRAPH, { path: "/" });
       console.log("setCookie", FB_GRAPH);
       console.log("Successfully logged in with Facebook");
     } else if (response.status === "not_authorized") {
@@ -38,7 +38,7 @@ const FacebookLogin = () => {
   };
 
   const handleButtonClick = () => {
-    console.log("cookies.FB_GRAPH", cookies.FB_GRAPH);
+    // console.log("cookies.FB_GRAPH", cookies.FB_GRAPH);
     FB.login(
       function (response) {
         checkLoginState(response);
