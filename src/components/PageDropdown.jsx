@@ -28,29 +28,33 @@ const PageDropdown = () => {
     }
   };
   return (
-    <div className="dropdownPageContainer">
-      <div className="dropdownPage">
-        <select
-          name="dropdown"
-          id="dropdown"
-          onChange={(e) => {
-            setSelPage(e.target.value);
-          }}
-        >
-          <option value="">Select A Page</option>
-          {pageList.map((item) => {
-            return (
-              <option value={item.page_id} key={item.page_id}>
-                {item.page_name}
-              </option>
-            );
-          })}
-        </select>
-        <button className="dropdownBtn" onClick={handleSubmitDrodown}>
-          Submit
-        </button>
-      </div>
-    </div>
+    <>
+      {pageList.length != 0 && (
+        <div className="dropdownPageContainer">
+          <div className="dropdownPage">
+            <select
+              name="dropdown"
+              id="dropdown"
+              onChange={(e) => {
+                setSelPage(e.target.value);
+              }}
+            >
+              <option value="">Select A Page</option>
+              {pageList.map((item) => {
+                return (
+                  <option value={item.page_id} key={item.page_id}>
+                    {item.page_name}
+                  </option>
+                );
+              })}
+            </select>
+            <button className="dropdownBtn" onClick={handleSubmitDrodown}>
+              Submit
+            </button>
+          </div>
+        </div>
+      )}
+    </>
   );
 };
 
