@@ -24,7 +24,8 @@ const CreateQueryString = (args) => {
   } else {
     params.period = "total_over_range";
   }
-  return new URLSearchParams(params).toString();
+  const searchParams = new URLSearchParams(params).toString();
+  return `${searchParams}&`;
 };
 
 export const fetchFollowers = createAsyncThunk(
@@ -32,7 +33,6 @@ export const fetchFollowers = createAsyncThunk(
   async (args, thunkAPI) => {
     const queryString = CreateQueryString(args);
     console.log("queryString", queryString);
-    console.log("args", args);
     let Url = `${FB_BASE_URL}/${args.page_id}?fields=followers_count,fan_count&period=total_over_range&access_token=${args.page_token}`;
     const apiData = await fetch(Url);
     const apiDataJson = await apiData.json();
