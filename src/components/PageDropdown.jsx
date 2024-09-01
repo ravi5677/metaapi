@@ -19,18 +19,22 @@ const PageDropdown = () => {
   const handleSubmitDrodown = () => {
     const params = { range: showRange, since: sinceDate, until: untilDate };
     // const queryString = new URLSearchParams(params).toString();
+    if (showRange === "range" && !sinceDate) {
+      alert("Please select Since date to view insights");
+      return;
+    }
     if (selPage.length) {
       const PageArr = pageList.filter((item) => {
         return item.page_id == selPage;
       });
       const selectedPage = PageArr[0];
-      console.log({ ...params, ...selectedPage });
-      dispatch(fetchFollowers(selectedPage));
-      dispatch(fetchImpressions(selectedPage));
-      dispatch(fetchEngagements(selectedPage));
-      dispatch(fetchReactions(selectedPage));
+      dispatch(fetchFollowers({ ...params, ...selectedPage }));
+      dispatch(fetchImpressions({ ...params, ...selectedPage }));
+      dispatch(fetchEngagements({ ...params, ...selectedPage }));
+      dispatch(fetchReactions({ ...params, ...selectedPage }));
     } else {
       alert("Please select a page to view insights");
+      return;
     }
   };
   return (
