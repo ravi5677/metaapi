@@ -1,7 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { FB_BASE_URL, API_VERSION } from "../Constants";
-
-const FB_DATA_URL = `${FB_BASE_URL}/${API_VERSION}`;
+import { FB_BASE_URL } from "../Constants";
 
 function isObject(o) {
   return o instanceof Object && o.constructor === Object;

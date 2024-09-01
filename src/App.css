@@ -65,7 +65,7 @@ body {
 .dropdownPage {
   background-color: #fff;
   width: 400px;
-  height: 100px;
+  height: auto;
   box-shadow: 0 0 4px 2px #000;
   text-align: center;
   margin-top: 25px;
@@ -82,7 +82,23 @@ body {
 #dropdown {
   height: 2rem;
   width: 10rem;
-  margin: 30px;
+  margin-top: 30px;
+}
+
+.inputBox {
+  height: 2rem;
+  width: 10rem;
+  margin-top: 30px;
+  font-family: Arial;
+  font-size: 14px;
+}
+
+.labelBox {
+  display: inline-block;
+  margin-right: 20px;
+  width: 100px;
+  text-align: right !important;
+  font-weight: 600;
 }
 
 .dropdownBtn {
@@ -91,6 +107,10 @@ body {
   padding: 10px 20px;
   font-weight: 600;
   color: #fff;
+}
+
+.dropdownBtnContainer {
+  margin: 30px 0;
 }
 
 .insightBox {
