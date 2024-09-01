@@ -3,9 +3,16 @@ import { FB_BASE_URL, API_VERSION } from "../Constants";
 
 const FB_DATA_URL = `${FB_BASE_URL}/${API_VERSION}`;
 
+function isObject(o) {
+  return o instanceof Object && o.constructor === Object;
+}
+
 const GET_TOTAL_INSIGHT_VALUE = (InsightApiResp) => {
   return InsightApiResp.map((item) => {
-    return item.values.reduce((a, c) => a + c.value, 0);
+    return item.values.reduce(
+      (a, c) => a + (isObject(c.value) ? 0 : c.value),
+      0
+    );
   }).reduce((a, c) => a + c, 0);
 };
 
@@ -36,6 +43,7 @@ export const fetchImpressions = createAsyncThunk(
     const apiData = await fetch(Url);
     const { data } = await apiData.json();
     const totalImpressions = GET_TOTAL_INSIGHT_VALUE(data);
+    console.log("fetchImpressions", data);
     return totalImpressions;
   }
 );
@@ -45,9 +53,7 @@ export const fetchReactions = createAsyncThunk(
     let Url = `${FB_BASE_URL}/${args.page_id}/insights/page_actions_post_reactions_total?access_token=${args.page_token}`;
     const apiData = await fetch(Url);
     const { data } = await apiData.json();
-    const totalReactions = data.map((item) => {
-      return item.values;
-    });
+    const totalReactions = GET_TOTAL_INSIGHT_VALUE(data);
     console.log("fetchReactions", totalReactions);
     return totalReactions;
   }
