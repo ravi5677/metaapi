@@ -3,28 +3,6 @@ import { FB_BASE_URL, API_VERSION } from "../Constants";
 
 const FB_DATA_URL = `${FB_BASE_URL}/${API_VERSION}`;
 
-/*
-export const fetchToken = createAsyncThunk(
-  "FB_GRAPH/fetchToken",
-  async (args, thunkAPI) => {
-    const state = thunkAPI.getState();
-    let Url = `${FB_BASE_URL}/oauth/access_token?client_id=${FB_APP_ID}&client_secret=${FB_APP_SECRET}&grant_type=client_credentials`;
-    const apiData = await fetch(Url);
-    const apiDataJson = await apiData.json();
-    return apiDataJson.access_token;
-  }
-);
-
-export const fetchUserId = createAsyncThunk(
-  "FB_GRAPH/fetchUserId",
-  async (args, thunkAPI) => {
-    let Url = `${FB_DATA_URL}/me?fields=id&access_token=${FB_ACCESS_TOKEN}`;
-    const apiData = await fetch(Url);
-    const apiDataJson = await apiData.json();
-    return apiDataJson.id;
-  }
-);
-*/
 export const fetchProfileData = createAsyncThunk(
   "FB_GRAPH/fetchProfileData",
   async (args, thunkAPI) => {
@@ -32,7 +10,6 @@ export const fetchProfileData = createAsyncThunk(
     let Url = `${FB_DATA_URL}/${state.FB_GRAPH.userID}?fields=id,name,email,picture&access_token=${state.FB_GRAPH.accessToken}`;
     const apiData = await fetch(Url);
     const apiDataJson = await apiData.json();
-    console.log("apiDataJson", apiDataJson);
     return apiDataJson;
   }
 );
@@ -70,12 +47,6 @@ const FbSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    /*builder.addCase(fetchToken.fulfilled, (state, action) => {
-      return { ...state, secretToken: action.payload };
-    });
-    builder.addCase(fetchUserId.fulfilled, (state, action) => {
-      return { ...state, userId: action.payload };
-    });*/
     builder.addCase(fetchProfileData.fulfilled, (state, action) => {
       return { ...state, userProfile: action.payload };
     });

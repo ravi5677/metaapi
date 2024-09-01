@@ -18,7 +18,7 @@ const FacebookLogin = () => {
       );
       dispatch(fetchProfileData());
       dispatch(fetchPageList());
-      //console.log("Successfully logged in with Facebook");
+      console.log("Successfully logged in with Facebook");
     } else if (response.status === "not_authorized") {
       console.log("Logged into Facebook but not your app.");
     } else {

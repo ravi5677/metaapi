@@ -1,23 +1,13 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import {
-  FB_APP_ID,
-  FB_APP_SECRET,
-  FB_BASE_URL,
-  API_VERSION,
-  FB_UID,
-  FB_ACCESS_TOKEN,
-} from "../Constants";
+import { FB_BASE_URL, API_VERSION } from "../Constants";
 
 const FB_DATA_URL = `${FB_BASE_URL}/${API_VERSION}`;
-
-const PAGE_ID = "500064973487193";
-const PAGE_TOKEN =
-  "EAAHHGUwrrZAABOxrj8I5L4qsZB0HIsFAIXvZAkHxuTecFZBS5X1MbRuKiLyinss9iJZCdTeGaRfM6UUkm1DZBONMlSuMgAPPzb6ZAc4BxBK03IHMC9sUXk0FAhkzHOMemZCbqPsVB7rhZC1bjFKgqvoGg5XbXoino2Q8DZAJFFwMI2vU3S0TpqWVk4BzKpNaqYIuEu";
 
 export const fetchFollowers = createAsyncThunk(
   "FB_INSIGHTS/fetchFollowers",
   async (args, thunkAPI) => {
-    let Url = `${FB_BASE_URL}/${PAGE_ID}?fields=followers_count,fan_count&period=total_over_range&access_token=${PAGE_TOKEN}`;
+    console.log("args", args);
+    let Url = `${FB_BASE_URL}/${args.page_id}?fields=followers_count,fan_count&period=total_over_range&access_token=${args.page_token}`;
     const apiData = await fetch(Url);
     const apiDataJson = await apiData.json();
     console.log("fetchFollowers", apiDataJson);
