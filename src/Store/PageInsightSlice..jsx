@@ -3,6 +3,12 @@ import { FB_BASE_URL, API_VERSION } from "../Constants";
 
 const FB_DATA_URL = `${FB_BASE_URL}/${API_VERSION}`;
 
+const GET_TOTAL_INSIGHT_VALUE = (InsightApiResp) => {
+  return InsightApiResp.map((item) => {
+    return item.values.reduce((a, c) => a + c.value, 0);
+  }).reduce((a, c) => a + c, 0);
+};
+
 export const fetchFollowers = createAsyncThunk(
   "FB_INSIGHTS/fetchFollowers",
   async (args, thunkAPI) => {
@@ -18,9 +24,10 @@ export const fetchEngagements = createAsyncThunk(
   async (args, thunkAPI) => {
     let Url = `${FB_BASE_URL}/${args.page_id}/insights/page_post_engagements?access_token=${args.page_token}`;
     const apiData = await fetch(Url);
-    const apiDataJson = await apiData.json();
+    const { data } = await apiData.json();
+    const totalEngagements = GET_TOTAL_INSIGHT_VALUE(data);
     console.log("fetchEngagements", apiDataJson);
-    return apiDataJson;
+    return totalEngagements;
   }
 );
 export const fetchImpressions = createAsyncThunk(
@@ -29,11 +36,7 @@ export const fetchImpressions = createAsyncThunk(
     let Url = `${FB_BASE_URL}/${args.page_id}/insights/page_impressions_unique?access_token=${args.page_token}`;
     const apiData = await fetch(Url);
     const { data } = await apiData.json();
-    const totalImpressions = data
-      .map((item) => {
-        return item.values.reduce((a, c) => a + c.value, 0);
-      })
-      .reduce((a, c) => a + c, 0);
+    const totalImpressions = GET_TOTAL_INSIGHT_VALUE(data);
     console.log("fetchImpressions", totalImpressions);
     return totalImpressions;
   }
@@ -41,7 +44,7 @@ export const fetchImpressions = createAsyncThunk(
 export const fetchReactions = createAsyncThunk(
   "FB_INSIGHTS/fetchReactions",
   async (args, thunkAPI) => {
-    let Url = `${FB_BASE_URL}/${args.page_id}/insights?metric=page_actions_post_reactions_total&period=total_over_range&access_token=${args.page_token}`;
+    let Url = `${FB_BASE_URL}/${args.page_id}/insights/page_actions_post_reactions_total?access_token=${args.page_token}`;
     const apiData = await fetch(Url);
     const apiDataJson = await apiData.json();
     console.log("fetchReactions", apiDataJson);
