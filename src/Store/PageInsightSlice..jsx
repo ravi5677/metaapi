@@ -26,7 +26,7 @@ export const fetchEngagements = createAsyncThunk(
     const apiData = await fetch(Url);
     const { data } = await apiData.json();
     const totalEngagements = GET_TOTAL_INSIGHT_VALUE(data);
-    console.log("fetchEngagements", apiDataJson);
+    console.log("fetchEngagements", totalEngagements);
     return totalEngagements;
   }
 );
