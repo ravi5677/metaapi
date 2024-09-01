@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import "./App.css";
 import PageDropdown from "./components/PageDropdown";
 import Navbar from "./pages/Navbar";
-import InsightCard from "./components/InsightCard";
+// import InsightCard from "./components/InsightCard";
 
 function App() {
   const FB_INSIGHTS = useSelector((store) => store.FB_INSIGHTS);
@@ -11,9 +11,9 @@ function App() {
     <>
       <Navbar />
       <PageDropdown />
-      {FB_INSIGHTS.map((item, ind) => {
+      {/* {FB_INSIGHTS.map((item, ind) => {
         return <InsightCard />;
-      })}
+      })} */}
     </>
   );
 }
