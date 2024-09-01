@@ -4,9 +4,12 @@ import {
   fetchProfileData,
   setSecretToken,
 } from "../Store/FbSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useCookies } from "react-cookie";
 const FacebookLogin = () => {
   const dispatch = useDispatch();
+  const [FB_GRAPH_COOKIE, SET_FB_GRAPH_COOKIE] = useCookies(["FB_GRAPH"]);
+
   const statusChangeCallback = (response) => {
     if (response.status === "connected") {
       const authResponse = response.authResponse;
@@ -18,6 +21,8 @@ const FacebookLogin = () => {
       );
       dispatch(fetchProfileData());
       dispatch(fetchPageList());
+      const FB_GRAPH = useSelector((store) => store.FB_GRAPH);
+      SET_FB_GRAPH_COOKIE(FB_GRAPH);
       console.log("Successfully logged in with Facebook");
     } else if (response.status === "not_authorized") {
       console.log("Logged into Facebook but not your app.");
