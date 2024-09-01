@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useCookies } from "react-cookie";
 const FacebookLogin = () => {
   const dispatch = useDispatch();
-  const [FB_GRAPH_COOKIE, SET_FB_GRAPH_COOKIE] = useCookies(["FB_GRAPH"]);
+  const [cookies, setCookie] = useCookies(["user"]);
 
   const statusChangeCallback = (response) => {
     if (response.status === "connected") {
@@ -22,7 +22,8 @@ const FacebookLogin = () => {
       dispatch(fetchProfileData());
       dispatch(fetchPageList());
       const FB_GRAPH = useSelector((store) => store.FB_GRAPH);
-      SET_FB_GRAPH_COOKIE(FB_GRAPH);
+      setCookie("FB_GRAPH", FB_GRAPH, { path: "/" });
+      console.log("setCookie", FB_GRAPH);
       console.log("Successfully logged in with Facebook");
     } else if (response.status === "not_authorized") {
       console.log("Logged into Facebook but not your app.");
@@ -37,6 +38,7 @@ const FacebookLogin = () => {
   };
 
   const handleButtonClick = () => {
+    console.log("cookies.FB_GRAPH", cookies.FB_GRAPH);
     FB.login(
       function (response) {
         checkLoginState(response);
