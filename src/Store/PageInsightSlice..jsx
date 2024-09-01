@@ -14,9 +14,24 @@ const GET_TOTAL_INSIGHT_VALUE = (InsightApiResp) => {
   }).reduce((a, c) => a + c, 0);
 };
 
+const CreateQueryString = (args) => {
+  const params = {};
+  if (args.range === range) {
+    params.since = args.since;
+    if (args.until.length === 10) {
+      params.until = args.until;
+    }
+  } else {
+    params.period = "total_over_range";
+  }
+  console.log(params);
+  // const queryString = new URLSearchParams(params).toString();
+};
+
 export const fetchFollowers = createAsyncThunk(
   "FB_INSIGHTS/fetchFollowers",
   async (args, thunkAPI) => {
+    CreateQueryString(args);
     let Url = `${FB_BASE_URL}/${args.page_id}?fields=followers_count,fan_count&period=total_over_range&access_token=${args.page_token}`;
     const apiData = await fetch(Url);
     const apiDataJson = await apiData.json();
@@ -41,7 +56,6 @@ export const fetchImpressions = createAsyncThunk(
     const apiData = await fetch(Url);
     const { data } = await apiData.json();
     const totalImpressions = GET_TOTAL_INSIGHT_VALUE(data);
-    console.log("fetchImpressions", data);
     return totalImpressions;
   }
 );
@@ -52,7 +66,6 @@ export const fetchReactions = createAsyncThunk(
     const apiData = await fetch(Url);
     const { data } = await apiData.json();
     const totalReactions = GET_TOTAL_INSIGHT_VALUE(data);
-    console.log("fetchReactions", totalReactions);
     return totalReactions;
   }
 );

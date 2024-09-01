@@ -18,7 +18,6 @@ const PageDropdown = () => {
 
   const handleSubmitDrodown = () => {
     const params = { range: showRange, since: sinceDate, until: untilDate };
-    // const queryString = new URLSearchParams(params).toString();
     if (showRange === "range" && !sinceDate) {
       alert("Please select Since date to view insights");
       return;
