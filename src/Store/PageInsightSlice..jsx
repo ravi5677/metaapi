@@ -27,7 +27,7 @@ export const fetchFollowers = createAsyncThunk(
 export const fetchEngagements = createAsyncThunk(
   "FB_INSIGHTS/fetchEngagements",
   async (args, thunkAPI) => {
-    let Url = `${FB_BASE_URL}/${args.page_id}/insights/page_post_engagements?access_token=${args.page_token}`;
+    let Url = `${FB_BASE_URL}/${args.page_id}/insights/page_post_engagements?period=total_over_range&access_token=${args.page_token}`;
     const apiData = await fetch(Url);
     const { data } = await apiData.json();
     const totalEngagements = GET_TOTAL_INSIGHT_VALUE(data);
@@ -37,7 +37,7 @@ export const fetchEngagements = createAsyncThunk(
 export const fetchImpressions = createAsyncThunk(
   "FB_INSIGHTS/fetchImpressions",
   async (args, thunkAPI) => {
-    let Url = `${FB_BASE_URL}/${args.page_id}/insights/page_impressions_unique?access_token=${args.page_token}`;
+    let Url = `${FB_BASE_URL}/${args.page_id}/insights/page_impressions_unique?period=total_over_range&access_token=${args.page_token}`;
     const apiData = await fetch(Url);
     const { data } = await apiData.json();
     const totalImpressions = GET_TOTAL_INSIGHT_VALUE(data);
@@ -48,7 +48,7 @@ export const fetchImpressions = createAsyncThunk(
 export const fetchReactions = createAsyncThunk(
   "FB_INSIGHTS/fetchReactions",
   async (args, thunkAPI) => {
-    let Url = `${FB_BASE_URL}/${args.page_id}/insights/page_actions_post_reactions_total?access_token=${args.page_token}`;
+    let Url = `${FB_BASE_URL}/${args.page_id}/insights/page_actions_post_reactions_total?period=total_over_range&access_token=${args.page_token}`;
     const apiData = await fetch(Url);
     const { data } = await apiData.json();
     const totalReactions = GET_TOTAL_INSIGHT_VALUE(data);

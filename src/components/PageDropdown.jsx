@@ -17,6 +17,7 @@ const PageDropdown = () => {
   const pageList = originalState.pages;
 
   const handleSubmitDrodown = () => {
+    console.log(showRange, sinceDate, untilDate);
     if (selPage) {
       const PageArr = pageList.filter((item) => {
         return item.page_id == selPage;
