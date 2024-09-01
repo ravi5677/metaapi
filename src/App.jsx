@@ -6,10 +6,7 @@ import InsightCard from "./components/InsightCard";
 
 function App() {
   const FB_INSIGHTS = useSelector((store) => store.FB_INSIGHTS);
-  // const totalKeys = Object.keys(FB_INSIGHTS);
-  const totalKeys = Object.keys(FB_INSIGHTS).forEach(
-    (k) => obj[k] == null && delete obj[k]
-  );
+  const totalKeys = Object.keys(FB_INSIGHTS);
   return (
     <>
       <Navbar />
@@ -18,7 +15,9 @@ function App() {
         {totalKeys.length &&
           totalKeys.map((item) => {
             return (
-              <InsightCard CardTitle={item} TitleValue={FB_INSIGHTS[item]} />
+              FB_INSIGHTS[item] != null && (
+                <InsightCard CardTitle={item} TitleValue={FB_INSIGHTS[item]} />
+              )
             );
           })}
       </div>
