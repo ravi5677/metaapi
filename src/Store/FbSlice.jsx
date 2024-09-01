@@ -32,6 +32,7 @@ export const fetchProfileData = createAsyncThunk(
     let Url = `${FB_DATA_URL}/${state.FB_GRAPH.userID}?fields=id,name,email,picture&access_token=${state.FB_GRAPH.accessToken}`;
     const apiData = await fetch(Url);
     const apiDataJson = await apiData.json();
+    console.log("apiDataJson", apiDataJson);
     return apiDataJson;
   }
 );
@@ -56,7 +57,7 @@ const FbSlice = createSlice({
   initialState: {
     accessToken: null,
     userID: null,
-    userProfile: { name: "Ravi Prakash Awasthi" },
+    userProfile: {},
     pages: [],
   },
   reducers: {
