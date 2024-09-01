@@ -26,7 +26,6 @@ export const fetchEngagements = createAsyncThunk(
     const apiData = await fetch(Url);
     const { data } = await apiData.json();
     const totalEngagements = GET_TOTAL_INSIGHT_VALUE(data);
-    console.log("fetchEngagements", totalEngagements);
     return totalEngagements;
   }
 );
@@ -37,7 +36,6 @@ export const fetchImpressions = createAsyncThunk(
     const apiData = await fetch(Url);
     const { data } = await apiData.json();
     const totalImpressions = GET_TOTAL_INSIGHT_VALUE(data);
-    console.log("fetchImpressions", totalImpressions);
     return totalImpressions;
   }
 );
@@ -46,6 +44,7 @@ export const fetchReactions = createAsyncThunk(
   async (args, thunkAPI) => {
     let Url = `${FB_BASE_URL}/${args.page_id}/insights/page_actions_post_reactions_total?access_token=${args.page_token}`;
     const apiData = await fetch(Url);
+    console.log("apiData", apiData);
     const apiDataJson = await apiData.json();
     console.log("fetchReactions", apiDataJson);
     return apiDataJson;
