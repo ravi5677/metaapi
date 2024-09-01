@@ -82,8 +82,6 @@ const FbSlice = createSlice({
       return {
         ...state,
         pages: action.payload,
-        secretToken: FB_ACCESS_TOKEN,
-        userId: FB_UID,
       };
     });
   },
