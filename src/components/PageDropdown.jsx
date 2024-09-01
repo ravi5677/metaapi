@@ -13,7 +13,7 @@ const PageDropdown = () => {
   const [untilDate, setUntilDate] = useState("");
   const dispatch = useDispatch();
   const originalState = useSelector((store) => store.FB_GRAPH);
-  const [selPage, setSelPage] = useState({});
+  const [selPage, setSelPage] = useState(null);
   const pageList = originalState.pages;
 
   const handleSubmitDrodown = () => {
