@@ -42,13 +42,21 @@ function testAPI() {
   });
 }
 
+const handleButtonClick = () => {
+  FB.login(
+    function (response) {
+      checkLoginState(response);
+    },
+    { scope: "public_profile,email", config_id: "2335936246749582" }
+  );
+};
+
 const Login = () => {
   return (
     <div>
-      <fb:login-button
-        scope="public_profile,email"
-        onlogin="checkLoginState();"
-      ></fb:login-button>
+      <div>
+        <button onClick={handleButtonClick}>Login with Facebook</button>
+      </div>
     </div>
   );
 };
