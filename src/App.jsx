@@ -25,8 +25,8 @@ function App() {
             <option value="">Select A Page</option>
             {pageList.map((item) => {
               return (
-                <option value={item.id} key={item.id}>
-                  {item.name}
+                <option value={item.page_id} key={item.page_id}>
+                  {item.page_name}
                 </option>
               );
             })}
