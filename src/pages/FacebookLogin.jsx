@@ -1,5 +1,9 @@
 import React, { useEffect } from "react";
-import { fetchProfileData, setSecretToken } from "../Store/FbSlice";
+import {
+  fetchPageList,
+  fetchProfileData,
+  setSecretToken,
+} from "../Store/FbSlice";
 import { useDispatch } from "react-redux";
 const FacebookLogin = () => {
   const dispatch = useDispatch();
