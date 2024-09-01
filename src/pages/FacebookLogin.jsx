@@ -27,13 +27,19 @@ function checkLoginState() {
   });
 }
 
+const handleButtonClick = () => {
+  FB.login(
+    function (response) {
+      checkLoginState(response);
+    },
+    { scope: "public_profile,email" }
+  );
+};
+
 const FacebookLogin = () => {
   return (
     <div>
-      <fb:login-button
-        scope="public_profile,email"
-        onLogin={checkLoginState}
-      ></fb:login-button>
+      <button onClick={handleButtonClick}>Login with Facebook</button>
     </div>
   );
 };
