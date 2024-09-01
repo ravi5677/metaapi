@@ -15,8 +15,8 @@ const GET_TOTAL_INSIGHT_VALUE = (InsightApiResp) => {
 };
 
 const CreateQueryString = (args) => {
-  const params = {};
-  if (args.range === range) {
+  var params = {};
+  if (args.range === "range") {
     params.since = args.since;
     if (args.until.length === 10) {
       params.until = args.until;
@@ -24,14 +24,15 @@ const CreateQueryString = (args) => {
   } else {
     params.period = "total_over_range";
   }
-  console.log(params);
-  // const queryString = new URLSearchParams(params).toString();
+  return new URLSearchParams(params).toString();
 };
 
 export const fetchFollowers = createAsyncThunk(
   "FB_INSIGHTS/fetchFollowers",
   async (args, thunkAPI) => {
-    CreateQueryString(args);
+    const queryString = CreateQueryString(args);
+    console.log("queryString", queryString);
+    console.log("args", args);
     let Url = `${FB_BASE_URL}/${args.page_id}?fields=followers_count,fan_count&period=total_over_range&access_token=${args.page_token}`;
     const apiData = await fetch(Url);
     const apiDataJson = await apiData.json();

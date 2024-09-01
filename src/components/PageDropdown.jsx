@@ -22,7 +22,7 @@ const PageDropdown = () => {
       alert("Please select Since date to view insights");
       return;
     }
-    if (selPage.length) {
+    if (selPage?.length) {
       const PageArr = pageList.filter((item) => {
         return item.page_id == selPage;
       });
@@ -38,7 +38,7 @@ const PageDropdown = () => {
   };
   return (
     <>
-      {pageList.length != 0 && (
+      {pageList.length !== 0 && (
         <div className="dropdownPageContainer">
           <div className="dropdownPage">
             <div>
