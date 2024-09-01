@@ -1,10 +1,13 @@
 import { useState } from "react";
 import "./App.css";
 import Navbar from "./pages/Navbar";
+import { useSelector } from "react-redux";
 
 function App() {
+  const originalState = useSelector((store) => store.FB_GRAPH);
+  console.log(originalState);
   const [selectedPageData, setSelectedPageData] = useState({});
-  const pageList = [];
+  const pageList = originalState.pages;
 
   const handleSubmitDrodown = () => {};
   return (

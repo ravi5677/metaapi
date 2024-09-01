@@ -4,7 +4,6 @@ import { useSelector } from "react-redux";
 
 const Navbar = () => {
   const originalState = useSelector((store) => store.FB_GRAPH);
-  console.log(originalState);
   const profile = originalState.userProfile;
   return (
     <div className="navbar">
