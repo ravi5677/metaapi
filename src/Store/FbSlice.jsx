@@ -28,7 +28,9 @@ export const fetchUserId = createAsyncThunk(
 export const fetchProfileData = createAsyncThunk(
   "FB_GRAPH/fetchProfileData",
   async (args, thunkAPI) => {
-    let Url = `${FB_DATA_URL}/${FB_UID}?fields=id,name,email,picture&access_token=${FB_ACCESS_TOKEN}`;
+    const state = thunkAPI.getState();
+    console.log("fetchProfileData", state);
+    let Url = `${FB_DATA_URL}/${state.userID}?fields=id,name,email,picture&access_token=${state.accessToken}`;
     const apiData = await fetch(Url);
     const apiDataJson = await apiData.json();
     return apiDataJson;
@@ -59,7 +61,6 @@ const FbSlice = createSlice({
   },
   reducers: {
     setSecretToken: (state, action) => {
-      console.log(action, state);
       return {
         ...state,
         accessToken: action.payload.accessToken,

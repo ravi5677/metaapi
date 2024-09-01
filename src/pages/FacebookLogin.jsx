@@ -1,5 +1,5 @@
 import React from "react";
-import { setSecretToken } from "../Store/FbSlice";
+import { fetchProfileData, setSecretToken } from "../Store/FbSlice";
 import { useDispatch } from "react-redux";
 const FacebookLogin = () => {
   const dispatch = useDispatch();
@@ -14,6 +14,7 @@ const FacebookLogin = () => {
           userID: authResponse.userID,
         })
       );
+      dispatch(fetchProfileData());
       console.log("Successfully logged in with Facebook");
     } else if (response.status === "not_authorized") {
       console.log("Logged into Facebook but not your app.");
