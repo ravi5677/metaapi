@@ -17,7 +17,9 @@ const PageDropdown = () => {
   const pageList = originalState.pages;
 
   const handleSubmitDrodown = () => {
-    console.log(showRange, sinceDate, untilDate);
+    const params = { range: showRange, since: sinceDate, until: untilDate };
+    const queryString = new URLSearchParams(params).toString();
+    console.log(queryString);
     if (selPage) {
       const PageArr = pageList.filter((item) => {
         return item.page_id == selPage;
