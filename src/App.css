@@ -1,0 +1,58 @@
+.button {
+  display: block;
+  border: 0px;
+  border-radius: 3px;
+  box-shadow: rgba(0, 0, 0, 0.5) 0px 1px 2px;
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+  font-size: 15px;
+  margin: 5px;
+  width: calc(100% - 10px);
+  overflow: hidden;
+  padding: 0px 10px;
+  user-select: none;
+  height: 35px;
+  background: rgb(59, 89, 152);
+}
+
+.facebookIcon {
+  align-items: center;
+  display: flex;
+  height: 100%;
+}
+
+body {
+  margin: 0px !important;
+}
+
+.login {
+  width: 25%;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 !important;
+  background-color: bisque;
+  padding: 5px 10px;
+}
+
+.user-detail {
+  display: flex;
+  align-items: center;
+  font-weight: 700;
+}
+
+.profile-pic {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  margin-right: 20px;
+}
+
+.svgContainer {
+  display: flex;
+  justify-content: center;
+  min-width: 26px;
+}
