@@ -56,3 +56,39 @@ body {
   justify-content: center;
   min-width: 26px;
 }
+
+.dropdownPageContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.dropdownPage {
+  background-color: #fff;
+  width: 400px;
+  height: 100px;
+  box-shadow: 0 0 4px 2px #000;
+  text-align: center;
+  margin-top: 25px;
+}
+.insightCard {
+  background-color: #fff;
+  width: 200px;
+  height: 100px;
+  box-shadow: 0 0 4px 2px #000;
+  text-align: center;
+  margin: 25px;
+}
+
+#dropdown {
+  height: 2rem;
+  width: 10rem;
+  margin: 30px;
+}
+
+.dropdownBtn {
+  background-color: coral;
+  border: none;
+  padding: 10px 20px;
+  font-weight: 600;
+  color: #fff;
+}
