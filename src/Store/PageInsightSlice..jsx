@@ -26,7 +26,7 @@ export const fetchEngagements = createAsyncThunk(
 export const fetchImpressions = createAsyncThunk(
   "FB_INSIGHTS/fetchImpressions",
   async (args, thunkAPI) => {
-    let Url = `${FB_BASE_URL}/${args.page_id}/insights?metric=page_impressions&period=total_over_range&access_token=${args.page_token}`;
+    let Url = `${FB_BASE_URL}/${args.page_id}/insights/page_impressions_unique?period=total_over_range&access_token=${args.page_token}`;
     const apiData = await fetch(Url);
     const apiDataJson = await apiData.json();
     console.log("fetchImpressions", apiDataJson);
