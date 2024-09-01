@@ -6,16 +6,18 @@ import InsightCard from "./components/InsightCard";
 
 function App() {
   const FB_INSIGHTS = useSelector((store) => store.FB_INSIGHTS);
+  const totalKeys = Object.keys(FB_INSIGHTS);
   return (
     <>
       <Navbar />
       <PageDropdown />
       <div className="insightBox">
-        {Object.keys(FB_INSIGHTS).map((item) => {
-          return (
-            <InsightCard CardTitle={item} TitleValue={FB_INSIGHTS[item]} />
-          );
-        })}
+        {totalKeys.length &&
+          totalKeys.map((item) => {
+            return (
+              <InsightCard CardTitle={item} TitleValue={FB_INSIGHTS[item]} />
+            );
+          })}
       </div>
     </>
   );
