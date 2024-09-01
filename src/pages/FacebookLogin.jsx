@@ -3,9 +3,7 @@ import { fetchProfileData, setSecretToken } from "../Store/FbSlice";
 import { useDispatch } from "react-redux";
 const FacebookLogin = () => {
   const dispatch = useDispatch();
-
   const statusChangeCallback = (response) => {
-    console.log(response);
     if (response.status === "connected") {
       const authResponse = response.authResponse;
       dispatch(

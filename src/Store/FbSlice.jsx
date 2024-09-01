@@ -32,7 +32,6 @@ export const fetchProfileData = createAsyncThunk(
     let Url = `${FB_DATA_URL}/${state.FB_GRAPH.userID}?fields=id,name,email,picture&access_token=${state.FB_GRAPH.accessToken}`;
     const apiData = await fetch(Url);
     const apiDataJson = await apiData.json();
-    console.log("fetchProfileData", state.FB_GRAPH, apiDataJson);
     return apiDataJson;
   }
 );
