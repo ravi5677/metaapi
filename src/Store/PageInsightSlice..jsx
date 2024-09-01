@@ -46,7 +46,7 @@ export const fetchReactions = createAsyncThunk(
     const apiData = await fetch(Url);
     const { data } = await apiData.json();
     const totalReactions = GET_TOTAL_INSIGHT_VALUE(data);
-    console.log("fetchReactions", totalReactions);
+    console.log("fetchReactions", data);
     return totalReactions;
   }
 );
