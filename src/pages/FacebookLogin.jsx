@@ -17,10 +17,6 @@ function statusChangeCallback(response) {
   }
 }
 
-FB.getLoginStatus(function (response) {
-  statusChangeCallback(response);
-});
-
 function checkLoginState() {
   FB.getLoginStatus(function (response) {
     statusChangeCallback(response);
@@ -32,7 +28,7 @@ const handleButtonClick = () => {
     function (response) {
       checkLoginState(response);
     },
-    { scope: "public_profile,email" }
+    { scope: "public_profile,email", config_id: "2335936246749582" }
   );
 };
 
