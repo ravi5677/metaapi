@@ -29,11 +29,13 @@ export const fetchImpressions = createAsyncThunk(
     let Url = `${FB_BASE_URL}/${args.page_id}/insights/page_impressions_unique?&access_token=${args.page_token}`;
     const apiData = await fetch(Url);
     const { data } = await apiData.json();
-    const apiDataJson = data.map((item) => {
-      return item.values.reduce((a, c) => a + c.value, 0);
-    });
-    console.log("fetchImpressions", apiDataJson);
-    return apiDataJson;
+    const totalImpressions = data
+      .map((item) => {
+        return item.values.reduce((a, c) => a + c.value, 0);
+      })
+      .reduce((a, c) => a + c, 0);
+    console.log("fetchImpressions", totalImpressions);
+    return totalImpressions;
   }
 );
 export const fetchReactions = createAsyncThunk(
