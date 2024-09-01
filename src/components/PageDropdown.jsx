@@ -1,6 +1,11 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchFollowers } from "../Store/PageInsightSlice.";
+import {
+  fetchEngagements,
+  fetchFollowers,
+  fetchImpressions,
+  fetchReactions,
+} from "../Store/PageInsightSlice.";
 
 const PageDropdown = () => {
   const dispatch = useDispatch();
