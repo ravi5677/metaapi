@@ -38,7 +38,8 @@ export const fetchProfileData = createAsyncThunk(
 export const fetchPageList = createAsyncThunk(
   "FB_GRAPH/fetchPageList",
   async (args, thunkAPI) => {
-    let Url = `${FB_DATA_URL}/${FB_UID}/accounts?access_token=${FB_ACCESS_TOKEN}`;
+    const state = thunkAPI.getState();
+    let Url = `${FB_DATA_URL}/${state.FB_GRAPH.userID}/accounts?access_token=${state.FB_GRAPH.accessToken}`;
     const apiData = await fetch(Url);
     const { data } = await apiData.json();
     const pageList = data.map((item) => ({

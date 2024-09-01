@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { fetchProfileData, setSecretToken } from "../Store/FbSlice";
 import { useDispatch } from "react-redux";
 const FacebookLogin = () => {
@@ -13,6 +13,7 @@ const FacebookLogin = () => {
         })
       );
       //dispatch(fetchProfileData());
+      dispatch(fetchPageList());
       //console.log("Successfully logged in with Facebook");
     } else if (response.status === "not_authorized") {
       console.log("Logged into Facebook but not your app.");
@@ -35,9 +36,11 @@ const FacebookLogin = () => {
     );
   };
 
-  // FB.getLoginStatus(function (response) { // It calls many times in a second handle accordingly
-  //   statusChangeCallback(response);
-  // });
+  useEffect(() => {
+    FB.getLoginStatus(function (response) {
+      statusChangeCallback(response);
+    });
+  }, []);
   return (
     <div>
       <button type="button" className="button" onClick={handleButtonClick}>
