@@ -32,8 +32,8 @@ export const fetchFollowers = createAsyncThunk(
   "FB_INSIGHTS/fetchFollowers",
   async (args, thunkAPI) => {
     const queryString = CreateQueryString(args);
-    console.log("queryString", queryString);
-    let Url = `${FB_BASE_URL}/${args.page_id}?fields=followers_count,fan_count&period=total_over_range&access_token=${args.page_token}`;
+    let Url = `${FB_BASE_URL}/${args.page_id}?fields=followers_count,fan_count&${queryString}`;
+    console.log("Url", Url);
     const apiData = await fetch(Url);
     const apiDataJson = await apiData.json();
     return apiDataJson;
@@ -44,7 +44,7 @@ export const fetchEngagements = createAsyncThunk(
   "FB_INSIGHTS/fetchEngagements",
   async (args, thunkAPI) => {
     const queryString = CreateQueryString(args);
-    let Url = `${FB_BASE_URL}/${args.page_id}/insights/page_post_engagements?period=total_over_range&access_token=${args.page_token}`;
+    let Url = `${FB_BASE_URL}/${args.page_id}/insights/page_post_engagements?${queryString}`;
     const apiData = await fetch(Url);
     const { data } = await apiData.json();
     const totalEngagements = GET_TOTAL_INSIGHT_VALUE(data);
@@ -55,7 +55,7 @@ export const fetchImpressions = createAsyncThunk(
   "FB_INSIGHTS/fetchImpressions",
   async (args, thunkAPI) => {
     const queryString = CreateQueryString(args);
-    let Url = `${FB_BASE_URL}/${args.page_id}/insights/page_impressions_unique?period=total_over_range&access_token=${args.page_token}`;
+    let Url = `${FB_BASE_URL}/${args.page_id}/insights/page_impressions_unique?${queryString}`;
     const apiData = await fetch(Url);
     const { data } = await apiData.json();
     const totalImpressions = GET_TOTAL_INSIGHT_VALUE(data);
@@ -66,7 +66,7 @@ export const fetchReactions = createAsyncThunk(
   "FB_INSIGHTS/fetchReactions",
   async (args, thunkAPI) => {
     const queryString = CreateQueryString(args);
-    let Url = `${FB_BASE_URL}/${args.page_id}/insights/page_actions_post_reactions_total?period=total_over_range&access_token=${args.page_token}`;
+    let Url = `${FB_BASE_URL}/${args.page_id}/insights/page_actions_post_reactions_total?${queryString}`;
     const apiData = await fetch(Url);
     const { data } = await apiData.json();
     const totalReactions = GET_TOTAL_INSIGHT_VALUE(data);
