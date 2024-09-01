@@ -13,7 +13,7 @@ const FacebookLogin = () => {
         })
       );
       dispatch(fetchProfileData());
-      console.log("Successfully logged in with Facebook");
+      //console.log("Successfully logged in with Facebook");
     } else if (response.status === "not_authorized") {
       console.log("Logged into Facebook but not your app.");
     } else {
@@ -35,9 +35,9 @@ const FacebookLogin = () => {
     );
   };
 
-  FB.getLoginStatus(function (response) {
-    statusChangeCallback(response);
-  });
+  // FB.getLoginStatus(function (response) { // It calls many times in a second handle accordingly
+  //   statusChangeCallback(response);
+  // });
   return (
     <div>
       <button type="button" className="button" onClick={handleButtonClick}>
