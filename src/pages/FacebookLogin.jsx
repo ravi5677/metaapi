@@ -7,10 +7,11 @@ const FacebookLogin = () => {
   const statusChangeCallback = (response) => {
     console.log(response);
     if (response.status === "connected") {
+      const authResponse = response.authResponse;
       dispatch(
         setSecretToken({
-          accessToken: response.accessToken,
-          userID: response.userID,
+          accessToken: authResponse.accessToken,
+          userID: authResponse.userID,
         })
       );
       console.log("Successfully logged in with Facebook");
