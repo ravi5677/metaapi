@@ -1,7 +1,7 @@
 import React from "react";
 import { setSecretToken } from "../Store/FbSlice";
 import { useDispatch } from "react-redux";
-import { handleButtonClick, statusChangeCallback } from "../Utils/fb";
+import { handleButtonClick, statusChangeCallback } from "../Utils/FbSdk";
 
 FB.getLoginStatus(function (response) {
   statusChangeCallback(response);
