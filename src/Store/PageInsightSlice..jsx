@@ -15,7 +15,7 @@ const GET_TOTAL_INSIGHT_VALUE = (InsightApiResp) => {
 };
 
 const CreateQueryString = (args) => {
-  var params = {};
+  var params = { access_token: args.page_token };
   if (args.range === "range") {
     params.since = args.since;
     if (args.until.length === 10) {
@@ -25,7 +25,7 @@ const CreateQueryString = (args) => {
     params.period = "total_over_range";
   }
   const searchParams = new URLSearchParams(params).toString();
-  return `${searchParams}&`;
+  return `${searchParams}`;
 };
 
 export const fetchFollowers = createAsyncThunk(
@@ -43,6 +43,7 @@ export const fetchFollowers = createAsyncThunk(
 export const fetchEngagements = createAsyncThunk(
   "FB_INSIGHTS/fetchEngagements",
   async (args, thunkAPI) => {
+    const queryString = CreateQueryString(args);
     let Url = `${FB_BASE_URL}/${args.page_id}/insights/page_post_engagements?period=total_over_range&access_token=${args.page_token}`;
     const apiData = await fetch(Url);
     const { data } = await apiData.json();
@@ -53,6 +54,7 @@ export const fetchEngagements = createAsyncThunk(
 export const fetchImpressions = createAsyncThunk(
   "FB_INSIGHTS/fetchImpressions",
   async (args, thunkAPI) => {
+    const queryString = CreateQueryString(args);
     let Url = `${FB_BASE_URL}/${args.page_id}/insights/page_impressions_unique?period=total_over_range&access_token=${args.page_token}`;
     const apiData = await fetch(Url);
     const { data } = await apiData.json();
@@ -63,6 +65,7 @@ export const fetchImpressions = createAsyncThunk(
 export const fetchReactions = createAsyncThunk(
   "FB_INSIGHTS/fetchReactions",
   async (args, thunkAPI) => {
+    const queryString = CreateQueryString(args);
     let Url = `${FB_BASE_URL}/${args.page_id}/insights/page_actions_post_reactions_total?period=total_over_range&access_token=${args.page_token}`;
     const apiData = await fetch(Url);
     const { data } = await apiData.json();
