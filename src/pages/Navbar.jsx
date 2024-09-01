@@ -27,7 +27,8 @@ const Navbar = () => {
       Object.keys(originalState.userProfile).length ? (
         <div className="user-detail">
           <img
-            src={profile?.picture.data.url}
+            //src={profile?.picture.data.url}
+            src=""
             alt="UserProfile"
             className="profile-pic"
           />
