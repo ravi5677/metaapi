@@ -11,7 +11,7 @@ function App() {
 
   const handleSubmitDrodown = () => {
     const selectedPage = pageList.filter((item) => {
-      return (item.page_id = selPage);
+      return item.page_id == selPage;
     });
     console.log(selectedPage);
   };
