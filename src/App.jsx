@@ -11,8 +11,8 @@ function App() {
     <>
       <Navbar />
       <PageDropdown />
-      {FB_INSIGHTS.map((item, key) => {
-        return <InsightCard key={key} CardTitle={key} TitleValue={item} />;
+      {Object.keys(FB_INSIGHTS).map((item) => {
+        <InsightCard CardTitle={item} TitleValue={FB_INSIGHTS[item]} />;
       })}
     </>
   );
