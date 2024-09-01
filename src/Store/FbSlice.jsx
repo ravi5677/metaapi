@@ -53,9 +53,8 @@ export const fetchPageList = createAsyncThunk(
 const FbSlice = createSlice({
   name: "FB_GRAPH",
   initialState: {
-    accessToken:
-      "EAAHHGUwrrZAABO7oX1R2O6Rv7rjB9KWzvVo6gkAVYEvjUZBiuGXOJUGSki4JNNhM12bmpO8StVbP1eXZC34eGnLzYJV0YXlcvmn3gHqwTOHZBjyJIRjJ3MHppggAvDa4YXZCn6sLTvvj3CeqhO0oZA4zr7ZCaZAvKZAeX13uZA0EnuDZCGsZCZBZAPZCvNzpFm3",
-    userID: "8061055577314380",
+    accessToken: null,
+    userID: null,
     userProfile: { name: "Ravi Prakash Awasthi" },
     pages: [],
   },

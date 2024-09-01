@@ -6,12 +6,12 @@ const FacebookLogin = () => {
   const statusChangeCallback = (response) => {
     if (response.status === "connected") {
       const authResponse = response.authResponse;
-      // dispatch(
-      //   setSecretToken({
-      //     accessToken: authResponse.accessToken,
-      //     userID: authResponse.userID,
-      //   })
-      // );
+      dispatch(
+        setSecretToken({
+          accessToken: authResponse.accessToken,
+          userID: authResponse.userID,
+        })
+      );
       //dispatch(fetchProfileData());
       //console.log("Successfully logged in with Facebook");
     } else if (response.status === "not_authorized") {
