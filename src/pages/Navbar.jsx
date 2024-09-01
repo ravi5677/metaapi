@@ -23,7 +23,7 @@ const Navbar = () => {
           </g>
         </svg>
       </div>
-      {originalState.secretToken &&
+      {originalState.accessToken &&
       Object.keys(originalState.userProfile).length ? (
         <div className="user-detail">
           <img
