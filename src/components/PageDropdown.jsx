@@ -21,7 +21,7 @@ const PageDropdown = () => {
       const selectedPage = PageArr[0];
       dispatch(fetchFollowers(selectedPage));
       dispatch(fetchImpressions(selectedPage));
-      // dispatch(fetchReactions(selectedPage));
+      dispatch(fetchReactions(selectedPage));
       dispatch(fetchEngagements(selectedPage));
     } else {
       alert("Please select a page to view insights");
