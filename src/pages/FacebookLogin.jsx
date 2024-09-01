@@ -16,7 +16,7 @@ const FacebookLogin = () => {
           userID: authResponse.userID,
         })
       );
-      //dispatch(fetchProfileData());
+      dispatch(fetchProfileData());
       dispatch(fetchPageList());
       //console.log("Successfully logged in with Facebook");
     } else if (response.status === "not_authorized") {

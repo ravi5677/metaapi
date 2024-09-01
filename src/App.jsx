@@ -6,10 +6,15 @@ import { useSelector } from "react-redux";
 function App() {
   const originalState = useSelector((store) => store.FB_GRAPH);
   console.log(originalState);
-  const [selectedPageData, setSelectedPageData] = useState({});
+  const [selPage, setSelPage] = useState({});
   const pageList = originalState.pages;
 
-  const handleSubmitDrodown = () => {};
+  const handleSubmitDrodown = () => {
+    const selectedPage = pageList.filter((item) => {
+      return (item.page_id = selPage);
+    });
+    console.log(selectedPage);
+  };
   return (
     <>
       <Navbar />
@@ -19,7 +24,7 @@ function App() {
             name="dropdown"
             id="dropdown"
             onChange={(e) => {
-              setSelectedPageData(e.target.value);
+              setSelPage(e.target.value);
             }}
           >
             <option value="">Select A Page</option>
