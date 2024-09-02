@@ -40,11 +40,11 @@ const FacebookLogin = () => {
     );
   };
 
-  // useEffect(() => {   // Gives an error FB is not defined
-  //   FB.getLoginStatus(function (response) {
-  //     statusChangeCallback(response);
-  //   });
-  // }, []);
+  useEffect(() => {
+    window.FB.getLoginStatus(function (response) {
+      statusChangeCallback(response);
+    });
+  }, []);
   return (
     <div>
       <button type="button" className="button" onClick={handleButtonClick}>
