@@ -8,7 +8,12 @@ function isObject(o) {
 const GET_TOTAL_INSIGHT_VALUE = (InsightApiResp) => {
   return InsightApiResp.map((item) => {
     return item.values.reduce(
-      (a, c) => a + (isObject(c.value) ? c.value.like + c.value.love : c.value),
+      (a, c) =>
+        a +
+        (isObject(c.value)
+          ? (c.value?.like ? c.value?.like : 0) +
+            (c.value?.love ? c.value?.love : 0)
+          : c.value),
       0
     );
   }).reduce((a, c) => a + c, 0);
