@@ -40,11 +40,11 @@ const FacebookLogin = () => {
     );
   };
 
-  // useEffect(() => {
-  //   FB.getLoginStatus(function (response) {
-  //     statusChangeCallback(response);
-  //   });
-  // }, []);
+  useEffect(() => {
+    FB.getLoginStatus(function (response) {
+      statusChangeCallback(response);
+    });
+  }, []);
   return (
     <div>
       <button type="button" className="button" onClick={handleButtonClick}>
