@@ -5,7 +5,7 @@ import {
   fetchFollowers,
   fetchImpressions,
   fetchReactions,
-} from "../Store/PageInsightSlice.";
+} from "../Store/PageInsightSlice";
 
 const PageDropdown = () => {
   const [showRange, setShowRange] = useState("total_over_range");

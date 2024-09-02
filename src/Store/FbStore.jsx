@@ -1,6 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import FbSlice from "./FbSlice";
-import PageInsightSlice from "./PageInsightSlice.";
+import PageInsightSlice from "./PageInsightSlice";
 
 const FbStore = configureStore({
   reducer: {
