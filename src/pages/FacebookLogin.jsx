@@ -41,7 +41,7 @@ const FacebookLogin = () => {
   };
 
   useEffect(() => {
-    window.FB.getLoginStatus(function (response) {
+    window.FB?.getLoginStatus(function (response) {
       statusChangeCallback(response);
     });
   }, []);
