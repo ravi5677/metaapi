@@ -12,9 +12,8 @@ const PageDropdown = () => {
   const [sinceDate, setsinceDate] = useState("");
   const [untilDate, setUntilDate] = useState("");
   const dispatch = useDispatch();
-  const originalState = useSelector((store) => store.FB_GRAPH);
+  const pageList = useSelector((store) => store.FB_GRAPH.pages);
   const [selPage, setSelPage] = useState(null);
-  const pageList = originalState.pages;
 
   const handleSubmitDrodown = () => {
     const params = { range: showRange, since: sinceDate, until: untilDate };

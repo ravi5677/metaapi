@@ -1,22 +1,20 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { FB_BASE_URL } from "../Constants";
 
-function isObject(o) {
-  return o instanceof Object && o.constructor === Object;
-}
-
 const GET_TOTAL_INSIGHT_VALUE = (InsightApiResp) => {
-  return InsightApiResp.map((item) => {
-    return item.values.reduce(
-      (a, c) =>
-        a +
-        (isObject(c.value)
-          ? (c.value?.like ? c.value?.like : 0) +
-            (c.value?.love ? c.value?.love : 0)
-          : c.value),
-      0
-    );
-  }).reduce((a, c) => a + c, 0);
+  if (!InsightApiResp || !Array.isArray(InsightApiResp)) return 0;
+
+  return InsightApiResp.reduce((total, item) => {
+    const itemTotal = item.values?.reduce((acc, current) => {
+      let val = current.value;
+      if (typeof val === "object" && val !== null) {
+        val = (val.like || 0) + (val.love || 0);
+      }
+      return acc + (Number(val) || 0);
+    }, 0) || 0;
+
+    return total + itemTotal;
+  }, 0);
 };
 
 const CreateQueryString = (args) => {

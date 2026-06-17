@@ -12,11 +12,11 @@ function App() {
       <Navbar />
       <PageDropdown />
       <div className="insightBox">
-        {totalKeys.length &&
+        {totalKeys.length > 0 &&
           totalKeys.map((item) => {
             return (
               FB_INSIGHTS[item] != null && (
-                <InsightCard CardTitle={item} TitleValue={FB_INSIGHTS[item]} />
+                <InsightCard key={item} CardTitle={item} TitleValue={FB_INSIGHTS[item]} />
               )
             );
           })}

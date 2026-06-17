@@ -3,8 +3,8 @@ import FacebookLogin from "./FacebookLogin";
 import { useSelector } from "react-redux";
 
 const Navbar = () => {
-  const originalState = useSelector((store) => store.FB_GRAPH);
-  const profile = originalState.userProfile;
+  const profile = useSelector((store) => store.FB_GRAPH.userProfile);
+  const accessToken = useSelector((store) => store.FB_GRAPH.accessToken);
   return (
     <div className="navbar">
       <div className="svgContainer">
@@ -22,8 +22,7 @@ const Navbar = () => {
           </g>
         </svg>
       </div>
-      {originalState.accessToken &&
-      Object.keys(originalState.userProfile).length ? (
+      {accessToken && Object.keys(profile || {}).length ? (
         <div className="user-detail">
           <img
             src={profile?.picture.data.url}
