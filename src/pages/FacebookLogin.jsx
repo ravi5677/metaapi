@@ -36,7 +36,7 @@ const FacebookLogin = () => {
       function (response) {
         checkLoginState(response);
       },
-      { scope: "public_profile,email" }
+      { config_id: "2335936246749582" }
     );
   };
 
